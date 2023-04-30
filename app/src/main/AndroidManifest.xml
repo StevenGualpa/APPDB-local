@@ -13,6 +13,15 @@
         android:theme="@style/Theme.App_Hidro_01"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity_InsertPerson"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivityLoggin"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_HistoricoTemperatura"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

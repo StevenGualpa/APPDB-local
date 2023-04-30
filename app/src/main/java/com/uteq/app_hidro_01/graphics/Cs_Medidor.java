@@ -29,11 +29,11 @@ public class Cs_Medidor
         com.ekn.gruzer.gaugelibrary.Range Rango_1;
         Rango_1=new com.ekn.gruzer.gaugelibrary.Range();
 
-        Rango_1.setFrom(0);Rango_1.setTo(10000);
+        Rango_1.setFrom(0);Rango_1.setTo(2000);
         Rango_1.setColor(Color.GREEN);
 
         retorno.setMinValue(0);
-        retorno.setMaxValue(10000);
+        retorno.setMaxValue(2000);
         //  retorno.setValue(30.5);
 
         retorno.addRange(Rango_1);

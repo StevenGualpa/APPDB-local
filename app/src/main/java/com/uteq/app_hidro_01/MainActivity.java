@@ -3,6 +3,7 @@ package com.uteq.app_hidro_01;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
@@ -30,6 +31,10 @@ public class MainActivity extends AppCompatActivity {
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference;
 
+
+    private boolean estadoluz;
+    private boolean estadoflujo;
+    private boolean estadollenado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,10 +64,10 @@ public class MainActivity extends AppCompatActivity {
         BtnFlujo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(BtnFlujo.getText().equals("ON"))
-                    databaseReference.child("HydroGrow").child("FLUJO DE AGUA").setValue(false);
+                if(estadoflujo)
+                    databaseReference.child("RealTime").child("FLUJO DE AGUA ").setValue(false);
                 else
-                    databaseReference.child("HydroGrow").child("FLUJO DE AGUA").setValue(true);
+                    databaseReference.child("RealTime").child("FLUJO DE AGUA ").setValue(true);
             }
         });
 
@@ -70,7 +75,10 @@ public class MainActivity extends AppCompatActivity {
         BtnLLenado.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(estadollenado)
+                    databaseReference.child("RealTime").child("LLENADO DE AGUA ").setValue(false);
+                else
+                    databaseReference.child("RealTime").child("LLENADO DE AGUA ").setValue(true);
             }
         });
 
@@ -78,13 +86,19 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+                if(estadoluz)
+                    databaseReference.child("RealTime").child("LUCES LED ").setValue(false);
+                else
+                    databaseReference.child("RealTime").child("LUCES LED ").setValue(true);
+
             }
         });
 
         BtnNut01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent( MainActivity.this, MainActivity_HistoricoTemperatura.class);
+                startActivity(intent);
             }
         });
 
@@ -92,11 +106,10 @@ public class MainActivity extends AppCompatActivity {
         BtnNut02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent( MainActivity.this,MainActivityLoggin.class);
+                startActivity(intent);
             }
         });
-
-        //IdMedidor.setValue(1100);
         inicializarFirebase();
         Extraer();
 
@@ -111,45 +124,43 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void Extraer(){
-        databaseReference.child("HydroGrow").addValueEventListener(new ValueEventListener() {
+        databaseReference.child("RealTime").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                TextView t=findViewById(R.id.txt00);
-
-
-
                 for(DataSnapshot objSnaptshot : dataSnapshot.getChildren()){
-
-
                     //Asignamos Datos a Graficos
                     HydroGrow H=new HydroGrow();
-
-                    H.setTemperatura(Double.parseDouble(dataSnapshot.child("Temperatura").getValue().toString()));
-                    H.setLUMINOSIDAD(Double.parseDouble(dataSnapshot.child("LUMINOSIDAD").getValue().toString()));
-                    H.setCalidad_del_Aire(dataSnapshot.child("Calidad del Aire").getValue().toString());
-                    H.setNIVEL_DE_PH(Integer.parseInt(dataSnapshot.child("NIVEL DE PH").getValue().toString()));
-
+                    H.setTemperatura(Double.parseDouble(dataSnapshot.child("TEMPERATURA ").getValue().toString()));
+                    H.setLUMINOSIDAD(Double.parseDouble(dataSnapshot.child("LUMINOSIDAD ").getValue().toString()));
+                    H.setCalidad_del_Aire(dataSnapshot.child("CALIDAD DEL AIRE ").getValue().toString());
+                    H.setNIVEL_DE_PH(Integer.parseInt(dataSnapshot.child("NIVEL DE PH ").getValue().toString()));
 
                     Medidor_temperatura.setValue(H.getTemperatura());
                     Medidor_luz.setValue(H.getLUMINOSIDAD());
                     Medidor_Aire.setValue(Double.parseDouble(H.getCalidad_del_Aire()));
                     Medidor_PH.setValue(H.getNIVEL_DE_PH());
 
-
                     //Asignamos Estados a los Botones
-                    H.setFLUJO_DE_AGUA((Boolean) dataSnapshot.child("FLUJO DE AGUA").getValue());
-                    H.setLlenado_de_Agua((Boolean) dataSnapshot.child("Llenado de Agua").getValue());
-                    H.setLUCES_LED((Boolean) dataSnapshot.child("LUCES LED").getValue());
-                    H.setNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO((Boolean) dataSnapshot.child("NUTRIENTE DE NITRÒGENO Y FOSFORO").getValue());
-                    H.setNUTRIENTE_DE_POTASIO((Boolean) dataSnapshot.child("NUTRIENTE DE POTASIO").getValue());
+                    H.setFLUJO_DE_AGUA((Boolean) dataSnapshot.child("FLUJO DE AGUA ").getValue());
+                    H.setLlenado_de_Agua((Boolean) dataSnapshot.child("LLENADO DE AGUA ").getValue());
+                    H.setLUCES_LED((Boolean) dataSnapshot.child("LUCES LED ").getValue());
 
-                    BtnFlujo.setText(H.getEstadoFLUJO_DE_AGUA());
-                    BtnLLenado.setText(H.getLlenado_de_Agua());
-                    BtnLuces.setText(H.getEstadoLUCES_LED());
-                    BtnNut01.setText(H.getEstadoNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO());
-                    BtnNut02.setText(H.getEstadoNUTRIENTE_DE_POTASIO());
+                    estadoflujo=H.isFLUJO_DE_AGUA();
+                    estadoluz=H.isLUCES_LED();
+                    estadollenado=H.isLlenado_de_Agua();
+                   // H.setNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO((Boolean) dataSnapshot.child("NUTRIENTE DE NITRÒGENO Y FOSFORO").getValue());
+                  //  H.setNUTRIENTE_DE_POTASIO((Boolean) dataSnapshot.child("NUTRIENTE DE POTASIO").getValue());
 
+               BtnFlujo.setText(H.getEstadoFLUJO_DE_AGUA());
+               BtnLLenado.setText(H.getLlenado_de_Agua());
+               BtnLuces.setText(H.getEstadoLUCES_LED());
+                  //  BtnNut01.setText(H.getEstadoNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO());
+                   // BtnNut02.setText(H.getEstadoNUTRIENTE_DE_POTASIO());
                 }
+
+
+
+
 
             }
 

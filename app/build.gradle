@@ -47,4 +47,7 @@ dependencies {
     //implementation 'com.androidplot:androidplot-core:1.5.7'
 
     implementation 'io.github.farshidroohi:lineGraph:1.0.2'
+
+
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
 }

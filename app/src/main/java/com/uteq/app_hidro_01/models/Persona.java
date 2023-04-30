@@ -6,6 +6,9 @@ public class Persona {
     private String nombres;
     private String telefono;
     private String fecharegistro;
+
+    private String usuario;
+    private String password;
     private Long timestap;
 
 
@@ -47,6 +50,23 @@ public class Persona {
 
     public void setTimestap(Long timestap) {
         this.timestap = timestap;
+    }
+
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @Override
