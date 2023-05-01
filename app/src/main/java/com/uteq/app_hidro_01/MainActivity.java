@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
 
 import com.ekn.gruzer.gaugelibrary.ArcGauge;
 import com.google.firebase.FirebaseApp;
@@ -19,7 +18,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uteq.app_hidro_01.graphics.Cs_Medidor;
 import com.uteq.app_hidro_01.models.HydroGrow;
-import com.uteq.app_hidro_01.models.acostumbrado;
 
 public class MainActivity extends AppCompatActivity {
 

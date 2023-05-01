@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.firebase.FirebaseApp;
@@ -34,11 +35,11 @@ public class MainActivity_InsertPerson extends AppCompatActivity {
         AlertDialog.Builder mBuilder = new AlertDialog.Builder(
                 MainActivity_InsertPerson.this
         );
-        Button btnInsertar = findViewById(R.id.btnInsertar);
-        final EditText mInputNombres = findViewById(R.id.inputNombre);
-        final EditText mInputTelefono = findViewById(R.id.inputTelefono);
-        final EditText mInputuser = findViewById(R.id.inputUser);
-        final EditText mInputpaswword = findViewById(R.id.inputPassword);
+        ImageView btnInsertar = findViewById(R.id.Insertar_ImageView_Insertar);
+        final EditText mInputNombres = findViewById(R.id.Insert_EditText_inputNombre);
+        final EditText mInputTelefono = findViewById(R.id.Insert_EditText_inputTelefono);
+        final EditText mInputuser = findViewById(R.id.Insert_EditText_inputUser);
+        final EditText mInputpaswword = findViewById(R.id.Insert_EditText_inputPassword);
         final  AlertDialog dialog = mBuilder.create();
         dialog.show();
 
@@ -81,17 +82,6 @@ public class MainActivity_InsertPerson extends AppCompatActivity {
 
     }
 
-
-
-    public void insertar(){
-        AlertDialog.Builder mBuilder = new AlertDialog.Builder(
-                MainActivity_InsertPerson.this
-        );
-
-
-
-    }
-
     public void showError(EditText input, String s){
         input.requestFocus();
         input.setError(s);
@@ -109,17 +99,5 @@ public class MainActivity_InsertPerson extends AppCompatActivity {
         String fecha = sdf.format(fechamilisegundos);
         return fecha;
     }
-    public boolean validarInputs(){
-        String nombre = inputNombre.getText().toString();
-        String telefono = inputTelefono.getText().toString();
-        if(nombre.isEmpty() || nombre.length() < 3){
-            showError(inputNombre, "Nombre invalido. (Min 3 letras)");
-            return true;
-        }else if(telefono.isEmpty() || telefono.length() < 9){
-            showError(inputTelefono, "Telefono invalido (Min 9 números)");
-            return true;
-        }else{
-            return false;
-        }
-    }
+
 }

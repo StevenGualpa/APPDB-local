@@ -8,7 +8,7 @@
     tools:context=".MainActivity_Loggin">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/Loggin_imageView_Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="fitXY"
@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/top_background1" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/Loggin_TextView_Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Bienvenido"
@@ -27,11 +27,11 @@
         android:textStyle="bold"
         android:textColor="#6672FF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/Loggin_imageView_Logo"
         />
 
     <EditText
-        android:id="@+id/editTextText"
+        android:id="@+id/Loggin_EditText_inputuser"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
@@ -47,11 +47,11 @@
         android:background="@drawable/edittext_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/Loggin_TextView_Logo"
         />
 
     <EditText
-        android:id="@+id/editTextText2"
+        android:id="@+id/Loggin_EditText_inputpassword"
         android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginEnd="32dp"
@@ -68,72 +68,30 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:flow_horizontalBias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText"
+        app:layout_constraintTop_toBottomOf="@+id/Loggin_EditText_inputuser"
         />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/Loggin_imageView_IniciarSesion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="32dp"
         android:layout_marginTop="24dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/editTextText2"
+        app:layout_constraintTop_toBottomOf="@id/Loggin_EditText_inputpassword"
         app:srcCompat="@drawable/btn_arraw1" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView2">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_weight="0.5"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/btn_background"
-            android:drawableEnd="@drawable/facebook"
-            style="@android:style/Widget.Button"
-            android:text="Facebook"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#3b608c"/>
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/button2"
-            android:layout_width="0dp"
-            android:layout_height="55dp"
-            android:layout_weight="0.5"
-            android:layout_marginStart="8dp"
-            android:background="@drawable/btn_background"
-            android:drawableEnd="@drawable/google"
-            style="@android:style/Widget.Button"
-            android:text="Google"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            android:textColor="#3b608c"/>
-
-
-    </LinearLayout>
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textView_registrar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="72dp"
         android:text="Are you new user? Register"
-        android:layout_marginTop="16dp"
-        android:textStyle="bold"
         android:textColor="#3b608c"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@id/linearLayout"
-        app:layout_constraintStart_toStartOf="@id/linearLayout"
-        app:layout_constraintTop_toBottomOf="@id/linearLayout"/>
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="@id/Loggin_imageView_IniciarSesion"
+        app:layout_constraintTop_toBottomOf="@id/Loggin_imageView_IniciarSesion" />
 </androidx.constraintlayout.widget.ConstraintLayout>

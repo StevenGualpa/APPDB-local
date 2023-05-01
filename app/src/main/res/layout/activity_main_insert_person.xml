@@ -1,63 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#EFF0FC"
+    tools:context=".MainActivity_InsertPerson">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+
+    <ImageView
+        android:id="@+id/Insert_imageView_Logo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#2B84F5"
-        android:layout_margin="10dp"
-        android:orientation="vertical">
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background1" />
+    <TextView
+        android:id="@+id/Insert_TextView_Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear Cuenta"
+        android:layout_marginStart="32dp"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="#6672FF"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/Insert_imageView_Logo"
+        />
+    <EditText
+        android:id="@+id/Insert_EditText_inputNombre"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:drawableStart="@drawable/email"
+        android:drawablePadding="16dp"
+        android:hint="Nombre"
+        android:textColorHint="#3B608C"
+        android:textSize="18sp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:background="@drawable/edittext_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Insert_TextView_Logo"/>
+    <EditText
+        android:id="@+id/Insert_EditText_inputTelefono"
+        android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="16dp"
+            android:hint="Telefono"
+            android:textColorHint="#3B608C"
+            android:textSize="18sp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:background="@drawable/edittext_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Insert_EditText_inputNombre"/>
 
-        <TextView
-            android:layout_width="match_parent"
+        <EditText
+            android:id="@+id/Insert_EditText_inputUser"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/email"
+            android:drawablePadding="16dp"
+            android:hint="Usuario"
+            android:textColorHint="#3B608C"
+            android:textSize="18sp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:background="@drawable/edittext_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Insert_EditText_inputTelefono"/>
+
+        <EditText
+            android:id="@+id/Insert_EditText_inputPassword"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:drawableStart="@drawable/password"
+            android:drawablePadding="16dp"
+            android:hint="Password"
+            android:textColorHint="#3B608C"
+            android:textSize="18sp"
+            android:ems="10"
+            android:inputType="textPassword"
+            android:background="@drawable/edittext_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/Insert_EditText_inputUser"/>
+        <ImageView
+            android:id="@+id/Insertar_ImageView_Insertar"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Insertar Persona"
-            android:textSize="20sp"
-            android:gravity="center"
-            android:textStyle="bold"/>
-
-        <EditText
-            android:id="@+id/inputNombre"
-            android:hint="Nombres.."
-            android:paddingTop="10dp"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <EditText
-            android:id="@+id/inputTelefono"
-            android:hint="Telefono.."
-            android:paddingTop="10dp"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/inputUser"
-            android:hint="Usuario.."
-            android:paddingTop="10dp"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <EditText
-            android:id="@+id/inputPassword"
-            android:hint="Pasword.."
-            android:paddingTop="10dp"
-            android:textColor="@color/white"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <Button
-            android:id="@+id/btnInsertar"
-            android:paddingTop="10dp"
-            android:text="INSERTAR PERSONA"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/Insert_EditText_inputPassword"
+            app:srcCompat="@drawable/btn_arraw1"
             />
 
-    </LinearLayout>
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
