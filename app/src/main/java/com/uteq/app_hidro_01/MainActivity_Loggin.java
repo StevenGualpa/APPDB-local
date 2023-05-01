@@ -2,6 +2,7 @@ package com.uteq.app_hidro_01;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,8 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uteq.app_hidro_01.models.Persona;
+import com.uteq.app_hidro_01.utilitarios.cs_Validation;
+import com.uteq.app_hidro_01.utilitarios.cs_utility;
 
 public class MainActivity_Loggin extends AppCompatActivity {
 
@@ -25,6 +28,12 @@ public class MainActivity_Loggin extends AppCompatActivity {
     ImageView img_iniciar;
     TextView txt_registrar;
 
+    EditText txtuser;
+    EditText txtpassword;
+
+    cs_Validation csValidator;
+    cs_utility csUtility;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,22 +42,35 @@ public class MainActivity_Loggin extends AppCompatActivity {
         img_iniciar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EditText user=findViewById(R.id.Loggin_EditText_inputuser);
-                EditText password=findViewById(R.id.Loggin_EditText_inputpassword);
-                String user_= user.getText().toString();
-                String pass=password.getText().toString();
-                signIn(user_,pass);
+            Iniciar();
             }
         });
         txt_registrar =findViewById(R.id.textView_registrar);
         txt_registrar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 Intent intent = new Intent( MainActivity_Loggin.this, MainActivity_InsertPerson.class);
                 startActivity(intent);
             }
         });
         inicializarFirebase();
+    }
+
+    private void Iniciar(){
+        txtuser=findViewById(R.id.Loggin_EditText_inputuser);
+        txtpassword=findViewById(R.id.Loggin_EditText_inputpassword);
+        String user= txtuser.getText().toString();
+        String pass=txtpassword.getText().toString();
+        csValidator=new cs_Validation();
+
+        if(user.isEmpty() || user.length()<2){
+            csValidator.showError(txtuser, "Usuario invalido (Min. 2 letras)");
+        }else if(pass.isEmpty() || pass.length()<2){
+            csValidator.showError(txtpassword, "Usuario invalido (Min. 2 letras)");
+        }else {
+            signIn(user,pass);
+        }
     }
     private void  inicializarFirebase(){
         FirebaseApp.initializeApp(this);
