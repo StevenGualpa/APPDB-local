@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -12,6 +14,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.App_Hidro_01"
         tools:targetApi="31">
+        <activity
+            android:name=".MainActivity_HistoricoPh"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_HistoricoCalidadAire"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity_HistoricoLuz"
+            android:exported="false" />
         <activity
             android:name=".MainActivity_Loggin"
             android:exported="true">
@@ -39,6 +50,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <service
+            android:name=".utilitarios.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

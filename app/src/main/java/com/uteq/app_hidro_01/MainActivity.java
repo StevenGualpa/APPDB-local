@@ -18,6 +18,17 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.uteq.app_hidro_01.graphics.Cs_Medidor;
 import com.uteq.app_hidro_01.models.HydroGrow;
+import com.uteq.app_hidro_01.utilitarios.MyFirebaseMessagingService;
+
+
+
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
+import android.graphics.Color;
+import android.os.Build;
+import androidx.core.app.NotificationCompat;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
     private boolean estadoluz;
     private boolean estadoflujo;
     private boolean estadollenado;
+
+    private boolean estadon01;
+
+    private boolean estadon02;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if(estadoflujo)
-                    databaseReference.child("RealTime").child("FLUJO DE AGUA ").setValue(false);
+                   {
+                       showNotification("Título de la notificación", "Contenido de la notificación");
+                       databaseReference.child("RealTime").child("FLUJO DE AGUA ").setValue(false);}
                 else
                     databaseReference.child("RealTime").child("FLUJO DE AGUA ").setValue(true);
             }
@@ -95,8 +112,10 @@ public class MainActivity extends AppCompatActivity {
         BtnNut01.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( MainActivity.this, MainActivity_HistoricoTemperatura.class);
-                startActivity(intent);
+                if(estadon01)
+                    databaseReference.child("RealTime").child("NUTRIENTE DE NITRÓGENO Y FOSFORO ").setValue(false);
+                else
+                    databaseReference.child("RealTime").child("NUTRIENTE DE NITRÓGENO Y FOSFORO ").setValue(true);
             }
         });
 
@@ -104,16 +123,75 @@ public class MainActivity extends AppCompatActivity {
         BtnNut02.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent( MainActivity.this,MainActivityLoggin.class);
+                if(estadon02)
+                    databaseReference.child("RealTime").child("NUTRIENTE POTASIO ").setValue(false);
+                else
+                    databaseReference.child("RealTime").child("NUTRIENTE POTASIO ").setValue(true);
+            }
+        });
+        Medidor_temperatura.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( MainActivity.this, MainActivity_HistoricoTemperatura.class);
+                startActivity(intent);
+            }
+        });
+
+        Medidor_luz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( MainActivity.this, MainActivity_HistoricoLuz.class);
+                startActivity(intent);
+            }
+        });
+
+        Medidor_Aire.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( MainActivity.this, MainActivity_HistoricoCalidadAire.class);
+                startActivity(intent);
+            }
+        });
+
+        Medidor_PH.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( MainActivity.this, MainActivity_HistoricoPh.class);
                 startActivity(intent);
             }
         });
         inicializarFirebase();
         Extraer();
 
+
+
     }
 
+    private void showNotification(String title, String content) {
+        String channelId = "my_channel_id";
+        String channelName = "My Channel";
+        NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, channelName, NotificationManager.IMPORTANCE_DEFAULT);
+            notificationChannel.setDescription("Descripción del canal");
+            notificationChannel.enableLights(true);
+            notificationChannel.setLightColor(Color.BLUE);
+            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
+            notificationChannel.enableVibration(true);
+            notificationManager.createNotificationChannel(notificationChannel);
+        }
+
+        NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId)
+                .setSmallIcon(R.drawable.ic_launcher_foreground) // Reemplaza con el ícono de tu aplicación
+                .setContentTitle(title)
+                .setContentText(content)
+                .setAutoCancel(true)
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT);
+
+        Notification notification = notificationBuilder.build();
+        notificationManager.notify(1, notification); // El primer parámetro es un ID único para la notificación
+    }
 
     private void  inicializarFirebase(){
         FirebaseApp.initializeApp(this);
@@ -138,22 +216,28 @@ public class MainActivity extends AppCompatActivity {
                     Medidor_Aire.setValue(Double.parseDouble(H.getCalidad_del_Aire()));
                     Medidor_PH.setValue(H.getNIVEL_DE_PH());
 
+                    if(Medidor_luz.getValue()>500)
+                        showNotification("Alerta", "Luz alta");
+
                     //Asignamos Estados a los Botones
                     H.setFLUJO_DE_AGUA((Boolean) dataSnapshot.child("FLUJO DE AGUA ").getValue());
                     H.setLlenado_de_Agua((Boolean) dataSnapshot.child("LLENADO DE AGUA ").getValue());
                     H.setLUCES_LED((Boolean) dataSnapshot.child("LUCES LED ").getValue());
+                    H.setNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO((Boolean) dataSnapshot.child("NUTRIENTE DE NITRÓGENO Y FOSFORO ").getValue());
+                    H.setNUTRIENTE_DE_POTASIO((Boolean) dataSnapshot.child("NUTRIENTE POTASIO ").getValue());
 
                     estadoflujo=H.isFLUJO_DE_AGUA();
                     estadoluz=H.isLUCES_LED();
                     estadollenado=H.isLlenado_de_Agua();
-                   // H.setNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO((Boolean) dataSnapshot.child("NUTRIENTE DE NITRÒGENO Y FOSFORO").getValue());
-                  //  H.setNUTRIENTE_DE_POTASIO((Boolean) dataSnapshot.child("NUTRIENTE DE POTASIO").getValue());
+                    estadon01=H.isNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO();
+                    estadon02=H.isNUTRIENTE_DE_POTASIO();
 
-               BtnFlujo.setText(H.getEstadoFLUJO_DE_AGUA());
-               BtnLLenado.setText(H.getLlenado_de_Agua());
-               BtnLuces.setText(H.getEstadoLUCES_LED());
-                  //  BtnNut01.setText(H.getEstadoNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO());
-                   // BtnNut02.setText(H.getEstadoNUTRIENTE_DE_POTASIO());
+
+                    BtnFlujo.setText(H.getEstadoFLUJO_DE_AGUA());
+                    BtnLLenado.setText(H.getLlenado_de_Agua());
+                    BtnLuces.setText(H.getEstadoLUCES_LED());
+                    BtnNut01.setText(H.getEstadoNUTRIENTE_DE_NITRÒGENO_Y_FOSFORO());
+                    BtnNut02.setText(H.getEstadoNUTRIENTE_DE_POTASIO());
                 }
 
 

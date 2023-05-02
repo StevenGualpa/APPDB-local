@@ -5,10 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EFF0FC"
-    tools:context=".MainActivity_HistoricoTemperatura">
+    tools:context=".MainActivity_HistoricoCalidadAire">
 
     <ImageView
-        android:id="@+id/HistoricoTemperatura_imageView_Logo"
+        android:id="@+id/HistoricoAire_imageView_Logo"
         android:layout_width="wrap_content"
         android:layout_height="300dp"
         android:scaleType="fitXY"
@@ -17,20 +17,20 @@
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/top_background1" />
     <TextView
-        android:id="@+id/HistoricoTemperatura_TextView_Logo"
+        android:id="@+id/HistoricoAire_TextView_Logo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Historico\n Temperatura"
+        android:text="Historico\n Calidad del Aire"
         android:layout_marginStart="32dp"
         android:textSize="40sp"
         android:textStyle="bold"
         android:textColor="#6672FF"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="@+id/HistoricoTemperatura_imageView_Logo"
+        app:layout_constraintBottom_toBottomOf="@+id/HistoricoAire_imageView_Logo"
         />
 
     <com.github.mikephil.charting.charts.LineChart
-        android:id="@+id/HistoricoTemperatura_Linechart"
+        android:id="@+id/HistoricoAire_Linechart"
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:layout_marginStart="32dp"
@@ -46,14 +46,14 @@
         />
 
     <ImageView
-        android:id="@+id/HistoricoTemperatura_ImageView_Regresar"
+        android:id="@+id/HistoricoAire_ImageView_Regresar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginEnd="28dp"
         android:rotationY="-176"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/HistoricoTemperatura_Linechart"
+        app:layout_constraintTop_toBottomOf="@id/HistoricoAire_Linechart"
         app:srcCompat="@drawable/btn_arraw1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

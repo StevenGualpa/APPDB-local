@@ -71,6 +71,8 @@ public class MainActivity_Loggin extends AppCompatActivity {
         }else {
             signIn(user,pass);
         }
+        //Intent intent = new Intent( MainActivity_Loggin.this, MainActivity_HistoricoTemperatura.class);
+       //startActivity(intent);
     }
     private void  inicializarFirebase(){
         FirebaseApp.initializeApp(this);

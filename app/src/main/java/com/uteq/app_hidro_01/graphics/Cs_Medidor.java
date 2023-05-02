@@ -1,8 +1,19 @@
 package com.uteq.app_hidro_01.graphics;
 
 import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 
 import com.ekn.gruzer.gaugelibrary.ArcGauge;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class Cs_Medidor
 {
@@ -56,7 +67,6 @@ public class Cs_Medidor
         return retorno;
     }
 
-
     public ArcGauge GeneratorGraphicsPH(ArcGauge retorno)
     {
         com.ekn.gruzer.gaugelibrary.Range Rango_1;
@@ -70,6 +80,35 @@ public class Cs_Medidor
         //  retorno.setValue(30.5);
 
         retorno.addRange(Rango_1);
+        return retorno;
+    }
+
+
+    public LineChart GeneratorGraphicsHistory(LineChart retorno, Map<String, Float> data, String labr){
+        List<Entry> entries = new ArrayList<>();
+        int index = 0;
+        for (Float value : data.values()) {
+            entries.add(new Entry(index++, value));
+        }
+
+        LineDataSet dataSet = new LineDataSet(entries, labr);
+        dataSet.setColor(Color.GREEN);
+        dataSet.setValueTextColor(Color.BLACK);
+        dataSet.setMode(LineDataSet.Mode.CUBIC_BEZIER);//version 02
+        // Añadir relleno degradado
+        dataSet.setDrawFilled(true);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR2) {
+            Drawable gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.BOTTOM_TOP,
+                    new int[]{Color.RED, Color.TRANSPARENT});
+            dataSet.setFillDrawable(gradientDrawable);
+        } else {
+            dataSet.setFillColor(Color.RED);
+        }
+
+        LineData lineData = new LineData(dataSet);
+        retorno.setData(lineData);
+        retorno.invalidate(); // Refrescar el gráfico
+
         return retorno;
     }
 }
