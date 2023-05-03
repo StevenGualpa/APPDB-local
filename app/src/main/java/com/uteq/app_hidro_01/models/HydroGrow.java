@@ -12,6 +12,21 @@ public class HydroGrow {
     private boolean NUTRIENTE_DE_POTASIO;
     private double Temperatura;
 
+    private int AguaLlena;
+
+    public int getAguaLlena() {
+        return AguaLlena;
+    }
+
+    public void setAguaLlena(int aguaLlena) {
+        AguaLlena = aguaLlena;
+    }
+
+    public int CambioValor(){
+        if(AguaLlena==1)return 0;
+        else return 1;
+    }
+
     public String getCalidad_del_Aire() {
         return Calidad_del_Aire;
     }

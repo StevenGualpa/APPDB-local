@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Build;
 
 import com.ekn.gruzer.gaugelibrary.ArcGauge;
+import com.ekn.gruzer.gaugelibrary.HalfGauge;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.github.mikephil.charting.data.LineData;
@@ -109,6 +110,23 @@ public class Cs_Medidor
         retorno.setData(lineData);
         retorno.invalidate(); // Refrescar el gráfico
 
+        return retorno;
+    }
+
+
+    public HalfGauge GeneratorGraphicsLlenado(HalfGauge retorno)
+    {
+        com.ekn.gruzer.gaugelibrary.Range Rango_1;
+        Rango_1=new com.ekn.gruzer.gaugelibrary.Range();
+
+        Rango_1.setFrom(0);Rango_1.setTo(1);
+
+        Rango_1.setColor(Color.BLUE);
+        retorno.setMinValue(0);
+        retorno.setMaxValue(1);
+        retorno.setValue(0);
+
+        retorno.addRange(Rango_1);
         return retorno;
     }
 }

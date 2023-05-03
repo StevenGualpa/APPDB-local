@@ -8,84 +8,99 @@
     tools:context=".MainActivity"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/Main_imageView_Logo"
+        android:layout_width="wrap_content"
+        android:layout_height="25dp"
+        android:scaleType="fitXY"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/top_background" />
+
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="30dp"
         android:text="FLUJO"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
-    <Button
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/Btn_Flujo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bordes_redondos"
         android:text="OFF"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.027"
+        app:layout_constraintHorizontal_bias="0.066"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="164dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="180dp"
+        android:layout_marginTop="30dp"
         android:text="LLENADO"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/Btn_Llenado"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bordes_redondos"
         android:text="OFF"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.455"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="308dp"
+        android:layout_marginTop="30dp"
         android:text="LUCES LED"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/Btn_Luces"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="45dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bordes_redondos"
         android:text="OFF"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.938"
+        app:layout_constraintHorizontal_bias="0.912"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -94,75 +109,79 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="90dp"
         android:text="Nutriente Nitrogeno y Fosforo"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/Btn_Nutriente01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="110dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bordes_redondos"
         android:text="OFF"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.13"
+        app:layout_constraintHorizontal_bias="0.265"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="256dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginStart="264dp"
+        android:layout_marginTop="88dp"
         android:text="Nutriente Potasio"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-
-    <Button
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/Btn_Nutriente02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="188dp"
+        android:layout_marginTop="110dp"
         android:layout_marginEnd="8dp"
-        android:background="@drawable/bordes_redondos"
         android:text="OFF"
-        android:textColor="@android:color/white"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.833"
+        app:layout_constraintHorizontal_bias="0.818"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="276dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="208dp"
         android:text="TEMPERATURA"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 
     <com.ekn.gruzer.gaugelibrary.ArcGauge
         android:id="@+id/Medidor_temperatura"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="240dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -170,9 +189,11 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="244dp"
-        android:layout_marginTop="276dp"
+        android:layout_marginStart="248dp"
+        android:layout_marginTop="208dp"
         android:text="INTENSIDAD DE LUZ"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -182,19 +203,20 @@
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="236dp"
-        android:layout_marginTop="316dp"
+        android:layout_marginTop="240dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
         android:id="@+id/txt00"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="508dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="416dp"
         android:text="CALIDAD DEL AIRE"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -204,34 +226,56 @@
         android:id="@+id/Medidor_Aire"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:layout_marginStart="36dp"
-        android:layout_marginTop="544dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="452dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <TextView
-        android:id="@+id/txr01"
+        android:id="@+id/txr010"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="296dp"
-        android:layout_marginTop="508dp"
-        android:text="PH"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="568dp"
+        android:text="Llenado de Agua"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <com.ekn.gruzer.gaugelibrary.ArcGauge
         android:id="@+id/Medidor_PH"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_marginStart="236dp"
-        android:layout_marginTop="544dp"
+        android:layout_marginTop="452dp"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <TextView
+        android:id="@+id/txr01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="296dp"
+        android:layout_marginTop="416dp"
+        android:text="PH"
+        android:textColor="#6672FF"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.ekn.gruzer.gaugelibrary.HalfGauge
+        android:id="@+id/Medidor_LLenado"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginTop="552dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

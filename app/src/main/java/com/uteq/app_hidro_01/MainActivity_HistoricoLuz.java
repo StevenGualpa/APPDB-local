@@ -53,14 +53,17 @@ public class MainActivity_HistoricoLuz extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 Map<String, Float> data = new HashMap<>();
-                int n=0;
+                int n= 0;
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     if(n<20){
                         data.put(snapshot.getKey(), snapshot.getValue(Float.class));
                         n++;
+                    }else {
+                        break;
                     }
-                    else break;
                 }
+
+
                 cs_medidor=new Cs_Medidor();
                 lineChart=cs_medidor.GeneratorGraphicsHistory(lineChart,data,"LUMINOSIDAD ");
                 //setupLineChart(data);
